@@ -113,8 +113,7 @@ NSString * const GoogleMapsDirectionsMode_toString[] = {
     if ([daddr length] > 0)
         [args addObject:daddr];
 
-    if (directionsMode < sizeof(GoogleMapsDirectionsMode_toString))
-        [args addObject:[NSString stringWithFormat:@"directionsmode=%@", GoogleMapsDirectionsMode_toString[directionsMode]]];
+    [args addObject:[NSString stringWithFormat:@"directionsmode=%@", GoogleMapsDirectionsMode_toString[directionsMode]]];
 
     for (NSInteger i = 0; i < [args count]; i++) {
 
@@ -140,7 +139,7 @@ NSString * const GoogleMapsDirectionsMode_toString[] = {
     }
     
     if (zoom > 0) {
-        [urlString appendFormat:@"&zoom=%d", zoom];
+        [urlString appendFormat:@"&zoom=%ld", (long)zoom];
     }
     
     switch (mapMode) {
